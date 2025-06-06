@@ -227,24 +227,6 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-- **Documentation**: [docs.studyvisa-ai.com](https://docs.studyvisa-ai.com)
-- **Community**: [Discord Server](https://discord.gg/studyvisa-ai)
-- **Email**: support@studyvisa-ai.com
-- **Phone**: +91-XXXX-XXXXXX
-
-## 🎉 Success Metrics
-
-- **95%** document accuracy with AI processing
-- **60%** faster application completion
-- **85%** visa approval rate (vs 65% industry average)
-- **₹50,000** average savings per student
-
 ---
 
 **Built with ❤️ for Indian students pursuing Canadian dreams**
