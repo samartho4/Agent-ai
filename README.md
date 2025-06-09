@@ -119,7 +119,3 @@ git push render main
 | 4   | OTEL tracing, k6 load‑test                    | Render deploy, quota alerts, purge cron |
 
 ---
-
-## 📝 License
-
-MIT © 2025 VisaMate‑AI Team
