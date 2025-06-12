@@ -2,6 +2,7 @@
 
 Welcome to **VisaMate‑AI**, an end‑to‑end platform that automates the Canada study‑visa workflow for Indian students—SOP writing, document OCR, checklist tracking, and file packaging—while running entirely on permanent free tiers.
 
+https://www.canva.com/design/DAGqJ9adkzk/h7vRg4dKJIEjPtH_P-YHMw/edit
 ---
 
 ## ✨ Key Features
