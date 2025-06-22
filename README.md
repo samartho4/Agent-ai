@@ -122,6 +122,12 @@ docker compose -f docker-compose.dev.yml up --build
 open http://localhost:8000/docs   # Swagger UI
 ```
 
+### Demo Document Upload
+
+1. Open `frontend/index.html` in your browser.
+2. Select a file and click **Upload**. The page submits to `/documents/upload` and shows the saved filename.
+
+
 ---
 
 ## 🌍 First Deploy (All Free‑Tier)
