@@ -127,21 +127,6 @@ open http://localhost:8000/docs   # Swagger UI
 1. Open `frontend/index.html` in your browser.
 2. Select a file and click **Upload**. The page submits to `/documents/upload` and shows the saved filename.
 
-### Demo SOP Generator
-
-1. In the same `frontend/index.html`, enter a JSON profile (e.g., `{"name": "Asha", "program": "MBA"}`) in the text box.
-2. Click **Generate SOP** to call `/sop/generate` and display a draft Statement of Purpose using Gemini.
-
-### Demo Policy Updates
-
-1. Click **Fetch Policy** in `frontend/index.html` to call `/policy/latest`.
-2. Recent IRCC news items will be printed below the button.
-
-### Demo University Matcher
-
-1. Enter a program name in the match form and click **Match Program**.
-2. If `EDUCANADA_URL` is set, results come from that JSON feed; otherwise the bundled sample data is used.
-
 
 ---
 
@@ -217,11 +202,7 @@ colab/         # R&D notebooks (export ➜ agents)
 git clone https://github.com/<org>/visamate-ai.git
 cd visamate-ai
 
-# env vars
-cp .env.example .env.dev  # fill Supabase / Together AI / Gemini / Pinecone / EduCanada keys
 
-# install Python dependencies for tests & local runs
-pip install -r requirements.txt
 
 # bring up full stack (Postgres, Redis, MinIO, API, Worker)
 docker compose -f docker-compose.dev.yml up --build
