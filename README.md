@@ -127,6 +127,11 @@ open http://localhost:8000/docs   # Swagger UI
 1. Open `frontend/index.html` in your browser.
 2. Select a file and click **Upload**. The page submits to `/documents/upload` and shows the saved filename.
 
+### Demo SOP Generator
+
+1. In the same `frontend/index.html`, enter a JSON profile (e.g., `{"name": "Asha", "program": "MBA"}`) in the text box.
+2. Click **Generate SOP** to call `/sop/generate` and display a draft Statement of Purpose using Gemini.
+
 
 ---
 
