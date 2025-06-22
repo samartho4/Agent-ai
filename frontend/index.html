@@ -1,85 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VisaMate</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 2rem; }
-        header { background: #004d99; color: white; padding: 1rem; }
-        main { margin-top: 2rem; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisaMate</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 2rem; }
+    header { background: #004d99; color: white; padding: 1rem; }
+    main { margin-top: 2rem; }
+    form, button { margin-bottom: 1rem; display: block; }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>VisaMate</h1>
-    </header>
-    <main>
-        <p>Welcome to the VisaMate demo interface.</p>
-        <form id="uploadForm" enctype="multipart/form-data" style="margin-bottom:1rem;">
-            <input type="file" name="file" required>
-            <button type="submit">Upload</button>
-        </form>
-        <p id="result"></p>
+  <header>
+    <h1>VisaMate</h1>
+  </header>
+  <main>
+    <p>Welcome to the VisaMate demo interface.</p>
 
-        <form id="sopForm">
-            <textarea name="profile" rows="4" cols="50" placeholder='{"name": "Asha", "program": "MBA"}' required></textarea>
-            <button type="submit">Generate SOP</button>
-        </form>
-        <pre id="sopResult"></pre>
+    <!-- Upload Form -->
+    <form id="uploadForm" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <button type="submit">Upload</button>
+    </form>
+    <p id="result"></p>
 
-        <button id="policyBtn">Fetch Policy</button>
-        <pre id="policyResult"></pre>
+    <!-- SOP Generator Form -->
+    <form id="sopForm">
+      <textarea name="profile" rows="4" cols="50"
+        placeholder='{"name": "Asha", "program": "MBA"}'
+        required></textarea>
+      <button type="submit">Generate SOP</button>
+    </form>
+    <pre id="sopResult"></pre>
 
-        <form id="matchForm" style="margin-top:1rem;">
-            <input type="text" name="program" placeholder="Desired program" required>
-            <button type="submit">Match Program</button>
-        </form>
-        <pre id="matchResult"></pre>
-    </main>
-    <script>
-        const uploadForm = document.getElementById('uploadForm');
-        uploadForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(uploadForm);
-            const resp = await fetch('/documents/upload', {
-                method: 'POST',
-                body: formData
-            });
-            const data = await resp.json();
-            document.getElementById('result').textContent = `Uploaded: ${data.filename}`;
-        });
+    <!-- Fetch Policy -->
+    <button id="policyBtn">Fetch Policy</button>
+    <pre id="policyResult"></pre>
 
-        const sopForm = document.getElementById('sopForm');
-        sopForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const profile = JSON.parse(sopForm.profile.value);
-            const resp = await fetch('/sop/generate', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(profile)
-            });
-            const data = await resp.json();
-            document.getElementById('sopResult').textContent = data.sop;
-        });
+    <!-- University Match Form -->
+    <form id="matchForm">
+      <input
+        type="text"
+        name="program"
+        placeholder="Desired program"
+        required
+      >
+      <button type="submit">Match Program</button>
+    </form>
+    <pre id="matchResult"></pre>
+  </main>
 
-        document.getElementById('policyBtn').addEventListener('click', async () => {
-            const resp = await fetch('/policy/latest');
-            const data = await resp.json();
-            document.getElementById('policyResult').textContent = JSON.stringify(data.news, null, 2);
-        });
+  <script>
+    // 1. Upload listener
+    const uploadForm = document.getElementById('uploadForm');
+    uploadForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const formData = new FormData(uploadForm);
+      const resp = await fetch('/documents/upload', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await resp.json();
+      document.getElementById('result').textContent = `Uploaded: ${data.filename}`;
+    });
 
-        const matchForm = document.getElementById('matchForm');
-        matchForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const resp = await fetch('/university/match', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({program: matchForm.program.value})
-            });
-            const data = await resp.json();
-            document.getElementById('matchResult').textContent = JSON.stringify(data.matches, null, 2);
-        });
-    </script>
+    // 2. SOP generator listener
+    const sopForm = document.getElementById('sopForm');
+    sopForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const profile = JSON.parse(sopForm.profile.value);
+      const resp = await fetch('/sop/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(profile)
+      });
+      const data = await resp.json();
+      document.getElementById('sopResult').textContent = data.sop;
+    });
+
+    // 3. Fetch policy listener
+    document.getElementById('policyBtn').addEventListener('click', async () => {
+      const resp = await fetch('/policy/latest');
+      const data = await resp.json();
+      document.getElementById('policyResult').textContent =
+        JSON.stringify(data.news, null, 2);
+    });
+
+    // 4. University match listener
+    const matchForm = document.getElementById('matchForm');
+    matchForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const resp = await fetch('/university/match', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ program: matchForm.program.value })
+      });
+      const data = await resp.json();
+      document.getElementById('matchResult').textContent =
+        JSON.stringify(data.matches, null, 2);
+    });
+  </script>
 </body>
 </html>
