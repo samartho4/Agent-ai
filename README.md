@@ -202,8 +202,7 @@ colab/         # R&D notebooks (export ➜ agents)
 git clone https://github.com/<org>/visamate-ai.git
 cd visamate-ai
 
-# env vars
-cp .env.example .env.dev  # fill Supabase / Together AI / Gemini / Pinecone / EduCanada keys
+
 
 # bring up full stack (Postgres, Redis, MinIO, API, Worker)
 docker compose -f docker-compose.dev.yml up --build
