@@ -117,7 +117,7 @@ T┌─────────────────────────�
 ```bash
 git clone https://github.com/<org>/visamate-ai.git
 cd visamate-ai
-cp .env.example .env.dev && nano .env.dev   # fill Supabase, Cloudflare, Together, Gemini & Pinecone keys
+cp .env.example .env.dev && nano .env.dev   # fill Supabase, Cloudflare, Together, Gemini, Pinecone & EduCanada keys
 docker compose -f docker-compose.dev.yml up --build
 open http://localhost:8000/docs   # Swagger UI
 ```
@@ -203,7 +203,7 @@ git clone https://github.com/<org>/visamate-ai.git
 cd visamate-ai
 
 # env vars
-cp .env.example .env.dev  # fill Supabase / Together AI / Gemini / Pinecone keys
+cp .env.example .env.dev  # fill Supabase / Together AI / Gemini / Pinecone / EduCanada keys
 
 # bring up full stack (Postgres, Redis, MinIO, API, Worker)
 docker compose -f docker-compose.dev.yml up --build
