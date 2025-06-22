@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+httpx
+python-multipart
+scikit-learn
+pdfminer.six
+pytest

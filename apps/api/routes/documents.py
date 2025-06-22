@@ -1,6 +1,10 @@
 """Document management routes."""
 
-from fastapi import APIRouter
+from pathlib import Path
+
+from fastapi import APIRouter, File, UploadFile
+
+from services.documents import save_file, extract_document_text
 
 
 router = APIRouter()
@@ -11,3 +15,19 @@ async def list_documents() -> dict[str, str]:
     """Return placeholder document list."""
     return {"result": "documents"}
 
+
+@router.post("/upload")
+async def upload_document(file: UploadFile = File(...)) -> dict[str, str]:
+    """Accept a document upload and store it locally."""
+    uploads_dir = Path("uploads")
+    await save_file(file, uploads_dir)
+    return {"filename": file.filename}
+
+
+@router.post("/scan")
+async def scan_document(file: UploadFile = File(...)) -> dict[str, str]:
+    """Upload a document and return extracted text."""
+    uploads_dir = Path("uploads")
+    path = await save_file(file, uploads_dir)
+    text = extract_document_text(path)
+    return {"text": text}
