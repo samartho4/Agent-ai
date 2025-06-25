@@ -1,11 +1,8 @@
-
-
-
 # AutoMatters · VisaMate‑AI
 
 *Free‑First, Policy‑Aware Study‑Visa Platform for Indian SDS Applicants & Certified Consultants*
 
-Business Model - https://www.canva.com/design/DAGqJ9adkzk/h7vRg4dKJIEjPtH_P-YHMw/edit
+Business Model -  https://www.canva.com/design/DAGqJ9adkzk/h7vRg4dKJIEjPtH_P-YHMw
 ---
 
 ## 🚀 Why AutoMatters?
